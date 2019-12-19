@@ -1,0 +1,74 @@
+{
+    "name": "Screenleap",
+    "description": "Free screen sharing using Screenleap. The fast, simple, and free way to share your screen instantly for online meetings, sales demos, and collaboration.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1901-screenleap.jpg",
+    "tags": [
+        "have api",
+        "new",
+        "screen share",
+        "sharing"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/screenleap\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Screenleap",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1901-screenleap.jpg",
+            "humanURL": "http:\/\/www.screenleap.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/screenleap-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "https:\/\/api.screenleap.com\/"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.screenleap.com\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/screenleap"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/screenleap"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/www.screenleap.com\/api"
+        },
+        {
+            "type": "Email",
+            "url": "copyright@screenleap.com"
+        },
+        {
+            "type": "Pricing",
+            "url": "http:\/\/www.screenleap.com\/pricing"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/screenleap"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.screenleap.com\/"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.screenleap.com"
+        }
+    ]
+}
