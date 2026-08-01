@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/screenleap-openapi.yml
+docs: https://www.screenleap.com/api/native/doc
+conventions:
+  protocol: REST-style over HTTPS, JSON serialization
+  base_url: https://api.screenleap.com/v2
+  authentication:
+    style: apiKey headers
+    headers: [accountid, authtoken]
+    notes: SSL required when sending the auth token. accountid may also be a query parameter.
+    ref: authentication/screenleap-authentication.yml
+  idempotency:
+    supported: false
+    notes: No idempotency-key header or param is documented by Screenleap.
+  pagination:
+    style: none
+    notes: >-
+      List endpoints return arrays capped at 1000 results, filtered by time
+      windows (startedBefore/startedAfter/endedBefore/endedAfter, epoch ms) and
+      externalId. No cursor/offset pagination is documented.
+  filtering:
+    params: [startedBefore, startedAfter, endedBefore, endedAfter, externalId, dateFormat]
+  dates:
+    format: milliseconds from epoch (int64); optional dateFormat query param (Java SimpleDateFormat)
+  external_ids:
+    notes: Callers may attach an externalId to a session/participant to correlate with their own records.
+  callbacks:
+    field: apiCallbackUrl
+    notes: A session may specify an apiCallbackUrl that Screenleap calls with share session events.
+    ref: asyncapi (webhook-style callback)
+  versioning:
+    style: uri-path
+    current: v2
+    ref: lifecycle/screenleap-lifecycle.yml
+  errors:
+    ref: errors/screenleap-problem-types.yml
+    envelope: JSON body with error detail on 4xx; bare status on some operations

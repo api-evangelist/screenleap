@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.screenleap.com/api/native/update
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: https://www.screenleap.com/api/native/update
+  notes: >-
+    The API is versioned in the URL path (api.screenleap.com/v2). Screenleap
+    published an "Update to Version 2" migration guide for developers moving off
+    v1.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support is documented.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []

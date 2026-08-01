@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.screenleap.com/api/doc/http-calls
+format: json
+envelope: >-
+  Errors return a non-2xx HTTP status. 400-series responses include error detail
+  in a JSON response body; 500-series indicate a server error (retry or contact
+  support).
+problems:
+- status: 400
+  title: Bad Request
+  detail: The request was malformed; error details are returned in the JSON response.
+- status: 401
+  title: Unauthorized
+  detail: Missing or incorrect credentials (accountid / authtoken).
+  source_operation: openapi/screenleap-openapi.yml#getScreenShare
+- status: 403
+  title: Forbidden
+  detail: Attempting to access a share session that does not belong to your account.
+  source_operation: openapi/screenleap-openapi.yml#stopScreenShare
+- status: 404
+  title: Not Found
+  detail: The share code does not exist or the session has already ended.
+  source_operation: openapi/screenleap-openapi.yml#getScreenShare
+- status: 500
+  title: Server Error
+  detail: A server-side error occurred; retry the request or contact support.

@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/screenleap-openapi.yml
+docs: https://www.screenleap.com/api/native/doc
+notes: >-
+  Screenleap authenticates every request with two apiKey headers — accountid
+  (your account identifier, may also be a query parameter) and authtoken (your
+  auth token). SSL is required for any request carrying the auth token. There is
+  no OAuth surface.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: accountId
+  type: apiKey
+  in: header
+  parameter: accountid
+  description: Your Screenleap account identifier.
+  sources:
+  - openapi/screenleap-openapi.yml
+- name: authToken
+  type: apiKey
+  in: header
+  parameter: authtoken
+  description: Your Screenleap authentication token. SSL required when sending it.
+  sources:
+  - openapi/screenleap-openapi.yml

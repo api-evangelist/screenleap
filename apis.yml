@@ -1,7 +1,17 @@
 aid: screenleap
 name: Screenleap
-description: Screenleap is a company surfaced as a portfolio company of a16z and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Screenleap is a screen sharing and online meeting service that lets anyone
+  share their screen instantly from a browser with no software install required
+  for viewers. Beyond the consumer product, Screenleap offers a REST-style
+  developer API (api.screenleap.com/v2) that lets businesses embed live
+  interaction — screen sharing, video conferencing, audio conferencing, chat and
+  cloud recording — directly into their own websites and online services. The
+  API creates and manages screen share sessions, returns a viewer URL and the
+  screenShareData used by the screenleap.js JavaScript library to start sharing,
+  and reports session usage and participant detail. Authentication uses an
+  account id and auth token passed as request headers over SSL. Screenleap is
+  backed by Andreessen Horowitz (a16z).
 url: https://raw.githubusercontent.com/api-evangelist/screenleap/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,14 +19,115 @@ x-backed-by:
 - a16z
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Screen Sharing
+- Video Conferencing
+- Screen Recording
+- Collaboration
+- Real-Time Communication
+- WebRTC
+- Embeddable
+- Developer API
+image: https://www.screenleap.com/img/logo.png
+apis:
+- aid: screenleap:screenleap-screen-shares-api
+  name: Screenleap Screen Shares API
+  description: Create, retrieve, list and stop screen share sessions.
+  humanURL: https://www.screenleap.com/api
+  baseURL: https://api.screenleap.com/v2
+  tags:
+  - Screen Shares
+  properties:
+  - type: OpenAPI
+    url: openapi/screenleap-screen-shares-api-openapi.yml
+  - type: Documentation
+    url: https://www.screenleap.com/api/native/doc
+  - type: APIReference
+    url: https://www.screenleap.com/api/doc/http-calls
+  - type: GettingStarted
+    url: https://www.screenleap.com/api/native/quick-start
+  - type: Authentication
+    url: authentication/screenleap-authentication.yml
+  - type: Conventions
+    url: conventions/screenleap-conventions.yml
+  - type: ErrorCatalog
+    url: errors/screenleap-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/screenleap-lifecycle.yml
+  - type: DataModel
+    url: data-model/screenleap-data-model.yml
+  - type: Conformance
+    url: conformance/screenleap-conformance.yml
+common:
+- type: DeveloperPortal
+  url: https://www.screenleap.com/api
+- type: Documentation
+  url: https://www.screenleap.com/api/native/doc
+- type: APIReference
+  url: https://www.screenleap.com/api/doc/http-calls
+- type: GettingStarted
+  url: https://www.screenleap.com/api/native/quick-start
+- type: FAQ
+  url: https://www.screenleap.com/api/v1/faq
+- type: Blog
+  url: https://blog.screenleap.com
+- type: GitHubOrganization
+  url: https://github.com/Screenleap
+- type: Support
+  url: https://www.screenleap.com/support
+- type: Pricing
+  url: https://www.screenleap.com/pricing
+- type: SignUp
+  url: https://www.screenleap.com/signup
+- type: TermsOfService
+  url: https://www.screenleap.com/terms
+- type: PrivacyPolicy
+  url: https://www.screenleap.com/privacy
+- type: Authentication
+  url: authentication/screenleap-authentication.yml
+- type: Conventions
+  url: conventions/screenleap-conventions.yml
+- type: ErrorCatalog
+  url: errors/screenleap-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/screenleap-lifecycle.yml
+- type: Conformance
+  url: conformance/screenleap-conformance.yml
+- type: DataModel
+  url: data-model/screenleap-data-model.yml
+- type: MCPServer
+  url: mcp/screenleap-mcp.yml
+- type: LLMsTxt
+  url: llms/screenleap-llms.txt
+- type: WellKnown
+  url: well-known/screenleap-well-known.yml
+- type: DomainSecurity
+  url: security/screenleap-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1

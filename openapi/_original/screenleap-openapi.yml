@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: Screenleap API
+  version: '2.0'
+  description: >-
+    The Screenleap API lets you add live interaction — screen sharing, video
+    conferencing, audio conferencing, chat and recording — to your website or
+    online service. It is a REST-style API that uses JSON for serialization.
+    Requests authenticate with an account id and an auth token passed as request
+    headers (SSL required when sending the auth token). This description is
+    derived from Screenleap's public HTTP Calls reference and Quick Start guide.
+  contact:
+    name: Screenleap Support
+    url: https://www.screenleap.com/support
+  x-apievangelist-generated: true
+  x-source: https://www.screenleap.com/api/doc/http-calls
+servers:
+  - url: https://api.screenleap.com/v2
+    description: Production
+security:
+  - accountId: []
+    authToken: []
+tags:
+  - name: Screen Shares
+    description: Create, retrieve, list and stop screen share sessions.
+paths:
+  /screen-shares:
+    post:
+      tags: [Screen Shares]
+      operationId: createScreenShare
+      summary: Create a screen share session
+      description: >-
+        Creates a new screen share session and returns the screenShareData used
+        to start sharing via the Screenleap JavaScript library plus the viewerUrl
+        to send to viewers.
+      responses:
+        '200':
+          description: Screen share session created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatedScreenShare'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    get:
+      tags: [Screen Shares]
+      operationId: listScreenShares
+      summary: Retrieve share sessions
+      description: >-
+        Returns an array of share sessions (maximum 1000 results) optionally
+        filtered by start/end time windows and external id.
+      parameters:
+        - name: startedBefore
+          in: query
+          description: Milliseconds from epoch; only sessions started before this time.
+          schema: { type: integer, format: int64 }
+        - name: startedAfter
+          in: query
+          description: Milliseconds from epoch; only sessions started after this time.
+          schema: { type: integer, format: int64 }
+        - name: endedBefore
+          in: query
+          description: Milliseconds from epoch; only sessions ended before this time.
+          schema: { type: integer, format: int64 }
+        - name: endedAfter
+          in: query
+          description: Milliseconds from epoch; only sessions ended after this time.
+          schema: { type: integer, format: int64 }
+        - name: dateFormat
+          in: query
+          description: Optional Java SimpleDateFormat pattern for formatting dates.
+          schema: { type: string }
+        - name: externalId
+          in: query
+          description: Filter sessions by the external id you assigned.
+          schema: { type: string }
+      responses:
+        '200':
+          description: An array of share sessions.
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 1000
+                items:
+                  $ref: '#/components/schemas/ScreenShare'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /screen-shares/{screenShareCode}:
+    get:
+      tags: [Screen Shares]
+      operationId: getScreenShare
+      summary: Retrieve share session information
+      parameters:
+        - $ref: '#/components/parameters/ScreenShareCode'
+      responses:
+        '200':
+          description: The requested share session.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScreenShare'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /screen-shares/{screenShareCode}/stop:
+    post:
+      tags: [Screen Shares]
+      operationId: stopScreenShare
+      summary: Stop an active share session
+      parameters:
+        - $ref: '#/components/parameters/ScreenShareCode'
+      responses:
+        '200':
+          description: Session stopped successfully.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /recent-screen-shares:
+    get:
+      tags: [Screen Shares]
+      operationId: listRecentScreenShares
+      summary: Retrieve recent share sessions
+      responses:
+        '200':
+          description: An array of recent share sessions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScreenShare'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    accountId:
+      type: apiKey
+      in: header
+      name: accountid
+      description: Your Screenleap account identifier.
+    authToken:
+      type: apiKey
+      in: header
+      name: authtoken
+      description: Your Screenleap authentication token. SSL required when sending it.
+  parameters:
+    ScreenShareCode:
+      name: screenShareCode
+      in: path
+      required: true
+      description: The code identifying the screen share session.
+      schema: { type: string }
+  responses:
+    Unauthorized:
+      description: Missing or incorrect credentials.
+    Forbidden:
+      description: Attempting to access a share session that is not yours.
+    NotFound:
+      description: The share code does not exist or the session has ended.
+  schemas:
+    CreatedScreenShare:
+      type: object
+      description: Response returned when a screen share session is created.
+      properties:
+        screenShareData:
+          type: string
+          description: Opaque data passed to screenleap.startSharing() to begin sharing.
+        viewerUrl:
+          type: string
+          format: uri
+          description: URL to send viewers to (or embed in an iframe) to watch the share.
+    ScreenShare:
+      type: object
+      description: A screen share session.
+      properties:
+        sessionId: { type: string }
+        dateCreated: { type: integer, format: int64, description: Milliseconds from epoch. }
+        accountId: { type: string }
+        externalId: { type: string }
+        isSecure: { type: boolean }
+        showScreenleapBranding: { type: boolean }
+        isActive: { type: boolean }
+        startTime: { type: integer, format: int64 }
+        endTime: { type: integer, format: int64 }
+        totalViewers: { type: integer }
+        userMinutes: { type: number }
+        costInCents: { type: integer }
+        title: { type: string }
+        apiCallbackUrl:
+          type: string
+          format: uri
+          description: URL Screenleap calls back with share session events.
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Participant'
+    Participant:
+      type: object
+      description: A participant (presenter or viewer) in a screen share session.
+      properties:
+        participantId: { type: string }
+        externalId: { type: string }
+        userAgent: { type: string }
+        sharingStartTime: { type: integer, format: int64 }
+        sharingEndTime: { type: integer, format: int64 }
+        durationInMinutes: { type: number }
+        isPresenter: { type: boolean }

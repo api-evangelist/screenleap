@@ -1,0 +1,11 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: screenleap-start-and-stop-share.md
+  name: Start and stop a Screenleap screen share
+  api: openapi/screenleap-openapi.yml
+  operations: [createScreenShare, stopScreenShare, getScreenShare]
+- file: screenleap-report-usage.md
+  name: Report Screenleap share usage
+  api: openapi/screenleap-openapi.yml
+  operations: [listScreenShares, listRecentScreenShares, getScreenShare]

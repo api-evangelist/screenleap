@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/screenleap-openapi.yml
+standards:
+- id: rest
+  conforms: true
+  evidence: REST-style API using JSON serialization and standard HTTP methods/status codes.
+- id: json
+  conforms: true
+  evidence: All requests/responses use JSON serialization.
+- id: oauth2
+  conforms: false
+  evidence: Authentication is apiKey headers (accountid/authtoken); no OAuth2 surface.
+- id: openidconnect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors return plain JSON error detail, not application/problem+json.
+- id: webhooks
+  conforms: true
+  evidence: Sessions may set apiCallbackUrl to receive share session event callbacks.
+- id: rest-pagination
+  conforms: false
+  evidence: List endpoints cap at 1000 results with time-window filters; no cursor/offset pagination.

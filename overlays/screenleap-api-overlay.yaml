@@ -1,0 +1,16 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Screenleap API
+  version: 1.0.0
+extends: openapi/screenleap-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 3
+    x-apievangelist-notes: >-
+      Spec derived by API Evangelist from Screenleap's public HTTP Calls
+      reference and Quick Start guide; not published by Screenleap.
+- target: $.tags
+  update:
+  - name: Screen Shares
+    description: Create, retrieve, list and stop screen share sessions.

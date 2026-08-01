@@ -1,0 +1,52 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/screenleap-openapi.yml
+entities:
+- name: ScreenShare
+  description: A screen share session.
+  id_field: sessionId
+  fields:
+  - sessionId
+  - dateCreated
+  - accountId
+  - externalId
+  - isSecure
+  - showScreenleapBranding
+  - isActive
+  - startTime
+  - endTime
+  - totalViewers
+  - userMinutes
+  - costInCents
+  - title
+  - apiCallbackUrl
+  - participants
+  relationships:
+  - type: has_many
+    target: Participant
+    via: participants
+  - type: belongs_to
+    target: Account
+    via: accountId
+- name: Participant
+  description: A presenter or viewer within a screen share session.
+  id_field: participantId
+  fields:
+  - participantId
+  - externalId
+  - userAgent
+  - sharingStartTime
+  - sharingEndTime
+  - durationInMinutes
+  - isPresenter
+  relationships:
+  - type: belongs_to
+    target: ScreenShare
+    via: participants
+- name: Account
+  description: The Screenleap developer account that owns share sessions (referenced by accountId).
+  id_field: accountId
+  relationships:
+  - type: has_many
+    target: ScreenShare
+    via: accountId

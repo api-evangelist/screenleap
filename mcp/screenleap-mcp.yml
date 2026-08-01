@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/screenleap-openapi.yml
+notes: >-
+  No official hosted/remote Screenleap MCP server was found. This is a candidate
+  tool list derived one-per-operation from the Screenleap OpenAPI.
+server:
+  name: screenleap
+  transport: http
+tools:
+- name: create_screen_share
+  description: Create a new screen share session and return the viewer URL and screenShareData.
+  source_operation: openapi/screenleap-openapi.yml#createScreenShare
+- name: list_screen_shares
+  description: Retrieve share sessions filtered by time window and external id (max 1000).
+  source_operation: openapi/screenleap-openapi.yml#listScreenShares
+- name: get_screen_share
+  description: Retrieve information about a single share session by code.
+  source_operation: openapi/screenleap-openapi.yml#getScreenShare
+- name: stop_screen_share
+  description: Stop an active share session by code.
+  source_operation: openapi/screenleap-openapi.yml#stopScreenShare
+- name: list_recent_screen_shares
+  description: Retrieve recent share sessions.
+  source_operation: openapi/screenleap-openapi.yml#listRecentScreenShares

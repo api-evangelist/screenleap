@@ -1,0 +1,29 @@
+# Screenleap
+
+> Screenleap is a screen sharing and online meeting service with a REST-style developer API (api.screenleap.com/v2) for embedding live interaction — screen sharing, video/audio conferencing, chat and cloud recording — into your own website or online service. Authentication uses an account id and auth token passed as request headers over SSL.
+
+## APIs
+- [Screenleap API](https://www.screenleap.com/api): REST-style API to create, retrieve, list and stop screen share sessions.
+
+## Specs
+- [OpenAPI (API Evangelist derived)](https://raw.githubusercontent.com/api-evangelist/screenleap/refs/heads/main/openapi/screenleap-openapi.yml)
+
+## Docs
+- [API Overview](https://www.screenleap.com/api/native/doc)
+- [Quick Start Guide](https://www.screenleap.com/api/native/quick-start)
+- [HTTP Calls Reference](https://www.screenleap.com/api/doc/http-calls)
+- [FAQ](https://www.screenleap.com/api/v1/faq)
+
+## Operations
+- createScreenShare — POST /screen-shares — create a session; returns viewerUrl + screenShareData
+- listScreenShares — GET /screen-shares — list sessions (time/externalId filters, max 1000)
+- getScreenShare — GET /screen-shares/{screenShareCode} — retrieve one session
+- stopScreenShare — POST /screen-shares/{screenShareCode}/stop — stop an active session
+- listRecentScreenShares — GET /recent-screen-shares — recent sessions
+
+## Resources
+- [Developer Portal](https://www.screenleap.com/api)
+- [Pricing](https://www.screenleap.com/pricing)
+- [GitHub Organization](https://github.com/Screenleap)
+- [Blog](https://blog.screenleap.com)
+- [Support](https://www.screenleap.com/support)
