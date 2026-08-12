@@ -75,6 +75,8 @@ apis:
   - type: Conformance
     url: conformance/screenleap-conformance.yml
 common:
+- type: Overlay
+  url: overlays/screenleap-api-overlay.yaml
 - type: DeveloperPortal
   url: https://www.screenleap.com/api
 - type: Documentation
