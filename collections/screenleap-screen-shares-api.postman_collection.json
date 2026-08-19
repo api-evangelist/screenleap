@@ -1,0 +1,953 @@
+{
+  "item": [
+    {
+      "id": "18da1433-8489-4ec3-81de-b4e806554970",
+      "name": "Screen Shares",
+      "description": {
+        "content": "Create, retrieve, list and stop screen share sessions.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4e7a96e-5bb3-4d04-9eb2-8daedcfbfbcc",
+          "name": "Create a screen share session",
+          "request": {
+            "name": "Create a screen share session",
+            "description": {
+              "content": "Creates a new screen share session and returns the screenShareData used to start sharing via the Screenleap JavaScript library plus the viewerUrl to send to viewers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screen-shares"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14596b0b-427a-4bf8-afad-e1042c8a7e15",
+              "name": "Screen share session created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"screenShareData\": \"string\",\n  \"viewerUrl\": \"https://NWaBGCIOFNxdZAbwjWSfuwEQHwaQ.oisauNnInPXT-OooldgQNumPtMPJQBCjgZEpKlmSZz+vhvWVduPQ6NxU3mP3fHFZ5d-PJAG+wA\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f647a3c9-2eb8-45d4-85b2-aa7f0c652a13",
+              "name": "Missing or incorrect credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50ff76aa-c067-456f-b576-c62debecff97",
+          "name": "Retrieve share sessions",
+          "request": {
+            "name": "Retrieve share sessions",
+            "description": {
+              "content": "Returns an array of share sessions (maximum 1000 results) optionally filtered by start/end time windows and external id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "screen-shares"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startedBefore",
+                  "value": "<long>",
+                  "description": "Milliseconds from epoch; only sessions started before this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "startedAfter",
+                  "value": "<long>",
+                  "description": "Milliseconds from epoch; only sessions started after this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "endedBefore",
+                  "value": "<long>",
+                  "description": "Milliseconds from epoch; only sessions ended before this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "endedAfter",
+                  "value": "<long>",
+                  "description": "Milliseconds from epoch; only sessions ended after this time."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateFormat",
+                  "value": "<string>",
+                  "description": "Optional Java SimpleDateFormat pattern for formatting dates."
+                },
+                {
+                  "disabled": false,
+                  "key": "externalId",
+                  "value": "<string>",
+                  "description": "Filter sessions by the external id you assigned."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d2ce5ad-6eba-4f9a-a86a-87228be90235",
+              "name": "An array of share sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startedBefore",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endedBefore",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endedAfter",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dateFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"sessionId\": \"string\",\n    \"dateCreated\": 9764,\n    \"accountId\": \"string\",\n    \"externalId\": \"string\",\n    \"isSecure\": true,\n    \"showScreenleapBranding\": false,\n    \"isActive\": true,\n    \"startTime\": 4831,\n    \"endTime\": 8253,\n    \"totalViewers\": 1106,\n    \"userMinutes\": 3299.2011858463034,\n    \"costInCents\": 6202,\n    \"title\": \"string\",\n    \"apiCallbackUrl\": \"http://LfvguInihqJcyJkaCMf.dftitq2Bl1NqXtxVL-4u1U8hc0xXbOS9w1NUt0O0i6vIFeSnkbkrXvqFQ+DRd7\",\n    \"participants\": [\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 6633,\n        \"sharingEndTime\": 1746,\n        \"durationInMinutes\": 6437.8634098520215,\n        \"isPresenter\": false\n      },\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 3008,\n        \"sharingEndTime\": 1640,\n        \"durationInMinutes\": 2887.821979052877,\n        \"isPresenter\": false\n      }\n    ]\n  },\n  {\n    \"sessionId\": \"string\",\n    \"dateCreated\": 4726,\n    \"accountId\": \"string\",\n    \"externalId\": \"string\",\n    \"isSecure\": false,\n    \"showScreenleapBranding\": true,\n    \"isActive\": true,\n    \"startTime\": 6099,\n    \"endTime\": 1520,\n    \"totalViewers\": 8674,\n    \"userMinutes\": 2240.987041577559,\n    \"costInCents\": 2784,\n    \"title\": \"string\",\n    \"apiCallbackUrl\": \"https://hrAWGHmtDzecGdjwyUcQsK.bcxJG2oJSNjS-,h31yeKWHgJHMyfBdrVVwP1N.ZocBRJDt2R7MOohsLx7yUzfU1CUR-zg0+\",\n    \"participants\": [\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 9791,\n        \"sharingEndTime\": 109,\n        \"durationInMinutes\": 7723.9152747912385,\n        \"isPresenter\": true\n      },\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 448,\n        \"sharingEndTime\": 5858,\n        \"durationInMinutes\": 9351.62725781151,\n        \"isPresenter\": false\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "777c64a1-fb16-4701-8002-4c0a936fba01",
+              "name": "Missing or incorrect credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startedBefore",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "startedAfter",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endedBefore",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "endedAfter",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "dateFormat",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe282da1-654a-4625-8948-d92f68799786",
+          "name": "Retrieve share session information",
+          "request": {
+            "name": "Retrieve share session information",
+            "description": {},
+            "url": {
+              "path": [
+                "screen-shares",
+                ":screenShareCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "screenShareCode",
+                  "description": "(Required) The code identifying the screen share session."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97697a8b-0728-42c7-b13b-9cd9cae9d6f8",
+              "name": "The requested share session.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"string\",\n  \"dateCreated\": 8368,\n  \"accountId\": \"string\",\n  \"externalId\": \"string\",\n  \"isSecure\": false,\n  \"showScreenleapBranding\": true,\n  \"isActive\": true,\n  \"startTime\": 4416,\n  \"endTime\": 6553,\n  \"totalViewers\": 1089,\n  \"userMinutes\": 5113.238880882651,\n  \"costInCents\": 5991,\n  \"title\": \"string\",\n  \"apiCallbackUrl\": \"https://ffwVXCYlhnHhlQZHSZ.ixTzZTyYkLiwAxnHr96CN2.C2ekzJmk6\",\n  \"participants\": [\n    {\n      \"participantId\": \"string\",\n      \"externalId\": \"string\",\n      \"userAgent\": \"string\",\n      \"sharingStartTime\": 5824,\n      \"sharingEndTime\": 2346,\n      \"durationInMinutes\": 9944.335237703008,\n      \"isPresenter\": true\n    },\n    {\n      \"participantId\": \"string\",\n      \"externalId\": \"string\",\n      \"userAgent\": \"string\",\n      \"sharingStartTime\": 8378,\n      \"sharingEndTime\": 1100,\n      \"durationInMinutes\": 2087.5915759905993,\n      \"isPresenter\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "153ab4dd-c7e2-47a7-91a2-ac9c21593d25",
+              "name": "Missing or incorrect credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acdf27cb-dc9b-4f59-9e96-0b6190282dcb",
+              "name": "Attempting to access a share session that is not yours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfc115aa-2577-469a-a6ce-13b196a2ae41",
+              "name": "The share code does not exist or the session has ended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4b04ed5-8abe-401a-bdcc-0f3f9abb4ed8",
+          "name": "Stop an active share session",
+          "request": {
+            "name": "Stop an active share session",
+            "description": {},
+            "url": {
+              "path": [
+                "screen-shares",
+                ":screenShareCode",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "screenShareCode",
+                  "description": "(Required) The code identifying the screen share session."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f124ac80-a3e9-4f9a-9835-add2278d740f",
+              "name": "Session stopped successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6672df09-713a-4a34-b23b-231efa1ca035",
+              "name": "Missing or incorrect credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a6d1e1b7-3abc-4f7e-8f69-19b641286c07",
+              "name": "Attempting to access a share session that is not yours.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c3fcb8d-84ae-4e2d-a37e-ef30061b1da0",
+              "name": "The share code does not exist or the session has ended.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "screen-shares",
+                    ":screenShareCode",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "screenShareCode",
+                      "description": "(Required) The code identifying the screen share session."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3b840ca-033f-4cbe-adc5-c322c6a14f14",
+          "name": "Retrieve recent share sessions",
+          "request": {
+            "name": "Retrieve recent share sessions",
+            "description": {},
+            "url": {
+              "path": [
+                "recent-screen-shares"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f37b8371-b015-4781-9d79-663e75b56773",
+              "name": "An array of recent share sessions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recent-screen-shares"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"sessionId\": \"string\",\n    \"dateCreated\": 3487,\n    \"accountId\": \"string\",\n    \"externalId\": \"string\",\n    \"isSecure\": true,\n    \"showScreenleapBranding\": false,\n    \"isActive\": false,\n    \"startTime\": 8301,\n    \"endTime\": 7026,\n    \"totalViewers\": 6938,\n    \"userMinutes\": 8201.08794682741,\n    \"costInCents\": 3875,\n    \"title\": \"string\",\n    \"apiCallbackUrl\": \"http://onbnGVTjpFlmMpEdRNOWDhyJ.uza9h23s2mHkJwWRUxRFDB294Cy\",\n    \"participants\": [\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 1524,\n        \"sharingEndTime\": 6731,\n        \"durationInMinutes\": 4229.13005561911,\n        \"isPresenter\": false\n      },\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 2987,\n        \"sharingEndTime\": 6331,\n        \"durationInMinutes\": 9571.32961948893,\n        \"isPresenter\": true\n      }\n    ]\n  },\n  {\n    \"sessionId\": \"string\",\n    \"dateCreated\": 3296,\n    \"accountId\": \"string\",\n    \"externalId\": \"string\",\n    \"isSecure\": true,\n    \"showScreenleapBranding\": true,\n    \"isActive\": true,\n    \"startTime\": 3744,\n    \"endTime\": 9073,\n    \"totalViewers\": 9461,\n    \"userMinutes\": 5421.530626473024,\n    \"costInCents\": 8756,\n    \"title\": \"string\",\n    \"apiCallbackUrl\": \"https://zEoFFFnZqSuYZLtjAjKJbRCIQoDM.opRq1Gf3xLQKY4wwRabaq6rqcSIG,ZF0ZqxTMy4J-VSPUa5B2xKjrn9hDIJCTrApw,aVEAF\",\n    \"participants\": [\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 3358,\n        \"sharingEndTime\": 8753,\n        \"durationInMinutes\": 1447.0801599536753,\n        \"isPresenter\": false\n      },\n      {\n        \"participantId\": \"string\",\n        \"externalId\": \"string\",\n        \"userAgent\": \"string\",\n        \"sharingStartTime\": 7593,\n        \"sharingEndTime\": 2234,\n        \"durationInMinutes\": 6636.656119119019,\n        \"isPresenter\": false\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84851ebc-b765-4439-92a8-646a2071b016",
+              "name": "Missing or incorrect credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recent-screen-shares"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "accountid",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.screenleap.com/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "accountid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cf7e2929-224f-476c-9537-783a8f61d1c4",
+    "name": "Screenleap Screen Shares API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Screenleap API lets you add live interaction — screen sharing, video conferencing, audio conferencing, chat and recording — to your website or online service. It is a REST-style API that uses JSON for serialization. Requests authenticate with an account id and an auth token passed as request headers (SSL required when sending the auth token). This description is derived from Screenleap's public HTTP Calls reference and Quick Start guide.\n\nContact Support:\n Name: Screenleap Support",
+      "type": "text/plain"
+    }
+  }
+}

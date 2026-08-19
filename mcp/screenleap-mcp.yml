@@ -2,9 +2,8 @@ generated: '2026-07-21'
 method: derived
 status: candidate
 source: openapi/screenleap-openapi.yml
-notes: >-
-  No official hosted/remote Screenleap MCP server was found. This is a candidate
-  tool list derived one-per-operation from the Screenleap OpenAPI.
+notes: No official hosted/remote Screenleap MCP server was found. This is a candidate tool list derived
+  one-per-operation from the Screenleap OpenAPI.
 server:
   name: screenleap
   transport: http
@@ -24,3 +23,9 @@ tools:
 - name: list_recent_screen_shares
   description: Retrieve recent share sessions.
   source_operation: openapi/screenleap-openapi.yml#listRecentScreenShares
+deployment:
+  mode: none
+  verified: derived
+  tools: 5
+  checked: '2026-08-12'
+  source: catalog MCP census

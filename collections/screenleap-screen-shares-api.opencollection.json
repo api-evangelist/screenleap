@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Screenleap Screen Shares API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "accountid",
+      "value": "{{accountid}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Screen Shares",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve share sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.screenleap.com/v2/screen-shares",
+            "params": [
+              {
+                "name": "startedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch; only sessions started before this time."
+              },
+              {
+                "name": "startedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch; only sessions started after this time."
+              },
+              {
+                "name": "endedBefore",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch; only sessions ended before this time."
+              },
+              {
+                "name": "endedAfter",
+                "value": "",
+                "type": "query",
+                "description": "Milliseconds from epoch; only sessions ended after this time."
+              },
+              {
+                "name": "dateFormat",
+                "value": "",
+                "type": "query",
+                "description": "Optional Java SimpleDateFormat pattern for formatting dates."
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "Filter sessions by the external id you assigned."
+              }
+            ]
+          },
+          "docs": "Returns an array of share sessions (maximum 1000 results) optionally filtered by start/end time windows and external id."
+        },
+        {
+          "info": {
+            "name": "Create a screen share session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.screenleap.com/v2/screen-shares"
+          },
+          "docs": "Creates a new screen share session and returns the screenShareData used to start sharing via the Screenleap JavaScript library plus the viewerUrl to send to viewers."
+        },
+        {
+          "info": {
+            "name": "Retrieve share session information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.screenleap.com/v2/screen-shares/:screenShareCode",
+            "params": [
+              {
+                "name": "screenShareCode",
+                "value": "",
+                "type": "path",
+                "description": "The code identifying the screen share session."
+              }
+            ]
+          },
+          "docs": "Retrieve share session information"
+        },
+        {
+          "info": {
+            "name": "Stop an active share session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.screenleap.com/v2/screen-shares/:screenShareCode/stop",
+            "params": [
+              {
+                "name": "screenShareCode",
+                "value": "",
+                "type": "path",
+                "description": "The code identifying the screen share session."
+              }
+            ]
+          },
+          "docs": "Stop an active share session"
+        },
+        {
+          "info": {
+            "name": "Retrieve recent share sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.screenleap.com/v2/recent-screen-shares"
+          },
+          "docs": "Retrieve recent share sessions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
