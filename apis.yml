@@ -88,6 +88,8 @@ apis:
   - type: Conformance
     url: conformance/screenleap-conformance.yml
 common:
+- type: Website
+  url: https://www.screenleap.com/
 - type: Overlay
   url: overlays/screenleap-api-overlay.yaml
 - type: DeveloperPortal
