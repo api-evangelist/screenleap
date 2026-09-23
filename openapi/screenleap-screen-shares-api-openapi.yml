@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Screenleap Screen Shares API
   version: '2.0'
@@ -144,13 +144,24 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
+    Forbidden:
+      description: Attempting to access a share session that is not yours.
     Unauthorized:
       description: Missing or incorrect credentials.
     NotFound:
       description: The share code does not exist or the session has ended.
-    Forbidden:
-      description: Attempting to access a share session that is not yours.
   schemas:
+    CreatedScreenShare:
+      type: object
+      description: Response returned when a screen share session is created.
+      properties:
+        screenShareData:
+          type: string
+          description: Opaque data passed to screenleap.startSharing() to begin sharing.
+        viewerUrl:
+          type: string
+          format: uri
+          description: URL to send viewers to (or embed in an iframe) to watch the share.
     Participant:
       type: object
       description: A participant (presenter or viewer) in a screen share session.
@@ -213,17 +224,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Participant'
-    CreatedScreenShare:
-      type: object
-      description: Response returned when a screen share session is created.
-      properties:
-        screenShareData:
-          type: string
-          description: Opaque data passed to screenleap.startSharing() to begin sharing.
-        viewerUrl:
-          type: string
-          format: uri
-          description: URL to send viewers to (or embed in an iframe) to watch the share.
   parameters:
     ScreenShareCode:
       name: screenShareCode
