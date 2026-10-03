@@ -143,14 +143,42 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    ScreenShareCode:
+      name: screenShareCode
+      in: path
+      required: true
+      description: The code identifying the screen share session.
+      schema:
+        type: string
   responses:
+    Unauthorized:
+      description: Missing or incorrect credentials.
     Forbidden:
       description: Attempting to access a share session that is not yours.
     NotFound:
       description: The share code does not exist or the session has ended.
-    Unauthorized:
-      description: Missing or incorrect credentials.
   schemas:
+    Participant:
+      type: object
+      description: A participant (presenter or viewer) in a screen share session.
+      properties:
+        participantId:
+          type: string
+        externalId:
+          type: string
+        userAgent:
+          type: string
+        sharingStartTime:
+          type: integer
+          format: int64
+        sharingEndTime:
+          type: integer
+          format: int64
+        durationInMinutes:
+          type: number
+        isPresenter:
+          type: boolean
     ScreenShare:
       type: object
       description: A screen share session.
@@ -204,34 +232,6 @@ components:
           type: string
           format: uri
           description: URL to send viewers to (or embed in an iframe) to watch the share.
-    Participant:
-      type: object
-      description: A participant (presenter or viewer) in a screen share session.
-      properties:
-        participantId:
-          type: string
-        externalId:
-          type: string
-        userAgent:
-          type: string
-        sharingStartTime:
-          type: integer
-          format: int64
-        sharingEndTime:
-          type: integer
-          format: int64
-        durationInMinutes:
-          type: number
-        isPresenter:
-          type: boolean
-  parameters:
-    ScreenShareCode:
-      name: screenShareCode
-      in: path
-      required: true
-      description: The code identifying the screen share session.
-      schema:
-        type: string
   securitySchemes:
     accountId:
       type: apiKey
